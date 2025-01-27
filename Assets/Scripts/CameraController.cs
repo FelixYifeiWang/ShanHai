@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     {
         // Horizontal movement with keys
         float horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 newPosition = transform.position + new Vector3(horizontalInput * scrollSpeed * Time.deltaTime, 0, 0);
+        Vector3 newPosition = transform.position + new Vector3(horizontalInput * 3 * scrollSpeed * Time.deltaTime, 0, 0);
 
         // Mouse-driven movement (move when mouse is near the screen edges)
         if (Input.mousePosition.x < 50) // Left edge
