@@ -11,7 +11,6 @@ public class DragAndDrop : MonoBehaviour
     {
         resourceManager = FindObjectOfType<ResourceManager>();
         buildingManager = FindObjectOfType<BuildingManager>();
-        Debug.Log(resourceManager.dragAndDropEnabled);
     }
 
     void OnMouseDown()

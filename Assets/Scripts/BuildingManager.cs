@@ -21,7 +21,7 @@ public class BuildingListWrapper
 public class BuildingManager : MonoBehaviour
 {
     public List<GameObject> buildingPrefabs; // List of building prefabs
-    private List<GameObject> buildings = new List<GameObject>();
+    public List<GameObject> buildings = new List<GameObject>();
     private string saveFilePath;
 
     void Start()
@@ -52,6 +52,7 @@ public class BuildingManager : MonoBehaviour
         {
             // Instantiate a new building based on the prefab index
             newBuilding = Instantiate(buildingPrefabs[prefabIndex], position, Quaternion.identity);
+            newBuilding.name = buildingPrefabs[prefabIndex].name;
             buildings.Add(newBuilding);
         }
     }
@@ -62,10 +63,15 @@ public class BuildingManager : MonoBehaviour
         foreach (GameObject building in buildings)
         {
             BuildingType type = building.GetComponent<BuildingType>();
+            int prefabIndex = buildingPrefabs.FindIndex(prefab => prefab.name == type.buildingPrefab.name);
+            if (prefabIndex == -1)
+            {
+                Debug.LogError($"Prefab not found in BuildingManager for building: {building.name}");
+            }
             BuildingData data = new BuildingData
             {
                 position = building.transform.position,
-                prefabIndex = buildingPrefabs.IndexOf(building.GetComponent<BuildingType>().buildingPrefab),
+                prefabIndex = prefabIndex,
                 isDefault = building.CompareTag("DefaultBuilding"),
                 id = type.id
             };

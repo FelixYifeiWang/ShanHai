@@ -8,6 +8,7 @@ public class ResourceManager : MonoBehaviour
     public List<Resource> resources = new List<Resource>();
     private string saveFilePath;
     public bool dragAndDropEnabled = false;
+    private List<GameObject> dwellings = new List<GameObject>();
 
     void Start()
     {
@@ -92,6 +93,16 @@ public class ResourceManager : MonoBehaviour
         SaveResources();
     }
 
+    public void AddDwelling(GameObject dwelling)
+    {
+        dwellings.Add(dwelling);
+    }
+
+    public int GetDwellingCount()
+    {
+        return dwellings.Count;
+    }
+
     private IEnumerator AutoSave()
     {
         while (true)
@@ -104,16 +115,17 @@ public class ResourceManager : MonoBehaviour
     public void EndTurn()
     {
         // Increment Turn Number
-        Debug.Log(GetResourceQuantity("Turn Number"));
         UpdateResource("Turn Number", 1);
-        Debug.Log(GetResourceQuantity("Turn Number"));
 
         // Set ActPoint to the value of Population
+        int dwellingCount = GetDwellingCount();
         float population = GetResourceQuantity("Population");
-        Resource actPoint = resources.Find(r => r.name == "ActPoint");
-        if (actPoint != null)
+        float actPoints = Mathf.Min(dwellingCount, population);
+
+        Resource actPointResource = resources.Find(r => r.name == "ActPoint");
+        if (actPointResource != null)
         {
-            actPoint.quantity = population;
+            actPointResource.quantity = actPoints;
         }
 
         Debug.Log("Turn Ended. New Turn Number: " + GetResourceQuantity("Turn Number"));

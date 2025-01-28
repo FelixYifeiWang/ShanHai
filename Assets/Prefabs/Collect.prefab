@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe1f220f3f883846b74889b9fd38b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
+  id: 2
   buildingPrefab: {fileID: 0}
 --- !u!114 &3517342694211351134
 MonoBehaviour:
