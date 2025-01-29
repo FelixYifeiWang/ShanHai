@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b3d4d4b368bb94d858cf960a19579d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dwellingPrefab: {fileID: 8340295691974501379, guid: c3440486aa0abd74695750abf6163523, type: 3}
 --- !u!4 &571208740
 Transform:
   m_ObjectHideFlags: 0
@@ -474,18 +475,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.33, y: 2.3}
   m_EdgeRadius: 0
---- !u!114 &1007836070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007836060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0936e7348232ec44eb9894f3a7794854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1247565707
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +593,8 @@ MonoBehaviour:
   - {fileID: 1157640409303916057, guid: ecdc4e22f3b4a5f49b96f8e90b28178d, type: 3}
   - {fileID: 5869062002651308903, guid: 00e3317d48e724b4c815136284bdd93f, type: 3}
   - {fileID: 9193305741616268032, guid: a8db239be1dc9a74c9b1e1bca6c18dc9, type: 3}
+  - {fileID: 8340295691974501379, guid: c3440486aa0abd74695750abf6163523, type: 3}
+  buildings: []
 --- !u!4 &1930707150
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe1f220f3f883846b74889b9fd38b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   buildingPrefab: {fileID: 1844807523589798571, guid: 9029ef656f009354dafbad053634afed, type: 3}
 --- !u!1001 &1841707734125800371
 PrefabInstance:
@@ -691,6 +682,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7224375545117052000, guid: a8db239be1dc9a74c9b1e1bca6c18dc9, type: 3}
+      propertyPath: id
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7224375545117052000, guid: a8db239be1dc9a74c9b1e1bca6c18dc9, type: 3}
       propertyPath: buildingPrefab
       value: 
@@ -804,7 +799,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7747824801373233376, guid: 9029ef656f009354dafbad053634afed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9029ef656f009354dafbad053634afed, type: 3}
 --- !u!1001 &2302287140913578398
 PrefabInstance:
@@ -820,6 +816,10 @@ PrefabInstance:
     - target: {fileID: 1157640409303916057, guid: ecdc4e22f3b4a5f49b96f8e90b28178d, type: 3}
       propertyPath: m_TagString
       value: DefaultBuilding
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863038160269301927, guid: ecdc4e22f3b4a5f49b96f8e90b28178d, type: 3}
+      propertyPath: id
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2863038160269301927, guid: ecdc4e22f3b4a5f49b96f8e90b28178d, type: 3}
       propertyPath: buildingPrefab
@@ -878,6 +878,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2177794109964479246, guid: 00e3317d48e724b4c815136284bdd93f, type: 3}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2177794109964479246, guid: 00e3317d48e724b4c815136284bdd93f, type: 3}
       propertyPath: buildingPrefab
       value: 

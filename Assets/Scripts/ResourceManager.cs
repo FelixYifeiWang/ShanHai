@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -23,12 +24,12 @@ public class ResourceManager : MonoBehaviour
         {
             // Initialize resources with default values
             AddResource("Qi", 100);
-            AddResource("Population", 2);
+            AddResource("Population", 1);
             AddResource("Food", 200);
             AddResource("Space", 10);
             AddResource("Money", 0);
             AddResource("Culture", 0);
-            AddResource("ActPoint", 2); 
+            AddResource("ActPoint", 0); 
             AddResource("Turn Number", 1);
         }
         StartCoroutine(AutoSave());
@@ -120,7 +121,7 @@ public class ResourceManager : MonoBehaviour
         // Set ActPoint to the value of Population
         int dwellingCount = GetDwellingCount();
         float population = GetResourceQuantity("Population");
-        float actPoints = Mathf.Min(dwellingCount, population);
+        float actPoints = Mathf.Min(dwellingCount, (float)Math.Floor(population));
 
         Resource actPointResource = resources.Find(r => r.name == "ActPoint");
         if (actPointResource != null)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class ResourceDisplay : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class ResourceDisplay : MonoBehaviour
         {
             if (resource.name != "Turn Number" && resource.name != "ActPoint")
             {
-                resourceText += $"{resource.name}: {resource.quantity}\n";
+                resourceText += $"{resource.name}: {Math.Floor(resource.quantity)}\n";
             }
         }
 
@@ -65,17 +66,20 @@ public class ResourceDisplay : MonoBehaviour
             int dwellingCount = buildingManager.buildings.FindAll(b => b.name == dwellingPrefab.name).Count;
             if (dwellingCount == 0 || 
                 (resourceManager.GetResourceQuantity("ActPoint") >= 1 &&
-                resourceManager.GetResourceQuantity("Money") >= 100))
+                resourceManager.GetResourceQuantity("Money") >= 100 &&
+                resourceManager.GetResourceQuantity("Space") >= buildingManager.buildings.Count))
             {
                 // Deduct 1 ActPoint and 100 Money
                 if (dwellingCount > 0)
                 {
                     resourceManager.UpdateResource("ActPoint", -1);
                     resourceManager.UpdateResource("Money", -100);
+                    resourceManager.UpdateResource("Qi", 50);
+                    resourceManager.UpdateResource("Population", (float)0.5);
                 }
 
                 // Instantiate the Dwelling prefab at a random position
-                Vector3 position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+                Vector3 position = new Vector3(UnityEngine.Random.Range(-5, 5), UnityEngine.Random.Range(-5, 5), 0);
 
                 int prefabIndex = buildingManager.buildingPrefabs.IndexOf(dwellingPrefab);
 
